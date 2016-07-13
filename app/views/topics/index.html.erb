@@ -1,24 +1,11 @@
 <h1>Topics#index</h1>
 <h2>All Blocmarks</h2>
-<div style="display:inline-block;">
-
-</div>
 
 <div class="row">
-  <div class="col-md-8">
-
-    <% @topics.each do |topic| %>
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-
-            <%= img_src %>
-            <%= link_to topic.name, topic %>
-          </h4>
-          <small>
-            <%= topic.description %>
-          </small>
-        </div>
-      </div>
+  <% @topics.each do |topic| %>
+    <h2><%= topic.title %></h2>
+    <% first_four_bookmarks(topic).each do |bookmark| %>
+      <%= render partial: "bookmarks/bookmark", locals: { bookmark: bookmark } %>
     <% end %>
-  </div>
+  <% end %>
+</div>

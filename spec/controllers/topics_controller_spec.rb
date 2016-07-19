@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TopicsController, type: :controller do
-  let(:my_topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
+  let(:my_topic) { Topic.create!(title: RandomData.random_sentence) }
 
   describe "GET #index" do
     it "returns http success" do
@@ -46,13 +46,6 @@ RSpec.describe TopicsController, type: :controller do
     it "initializes @topic" do
       get :new
       expect(assigns(:topic)).not_to be_nil
-    end
-  end
-
-  describe "GET #edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
     end
   end
 

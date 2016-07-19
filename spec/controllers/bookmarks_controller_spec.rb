@@ -1,7 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe BookmarksController, type: :controller do
-  let(:my_bookmark) { Bookmark.create!(url: "www.google.com") }
+  let(:my_topic) { Topic.create!(title: "my topic") }
+  let(:my_bookmark) { Bookmark.create!(url: "www.google.com", topic_id: my_topic.id) }
+  let(:user) { User.create(email: "blocmarks@example.com", password: "blocmarks", password_confirmation: "blocmarks")}
+
+  before(:each) do
+    user.skip_confirmation!
+    sign_in(user)
+  end
 
   describe "GET show" do
     it "returns http success" do
@@ -10,7 +17,7 @@ RSpec.describe BookmarksController, type: :controller do
     end
 
     it "renders the #show view" do
-      get :show, {id: my_bookmark.id}
+      get :show, {id: my_bookmark.id, topic_id: my_topic.id}
       expect(response).to render_template :show
     end
 
@@ -22,7 +29,7 @@ RSpec.describe BookmarksController, type: :controller do
 
   describe "GET new" do
     it "returns http success" do
-      get :new
+      get :new, { topic_id: my_topic.id }
       expect(response).to have_http_status(:success)
     end
 

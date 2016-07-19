@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root 'pages#welcome'
 
   resources :topics, except: [:edit, :update] do
-    resources :bookmarks
+    resources :bookmarks, except: [:index]
   end
 end

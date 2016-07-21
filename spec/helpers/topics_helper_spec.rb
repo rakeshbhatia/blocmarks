@@ -11,7 +11,4 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe TopicsHelper, type: :helper do
-  let(:my_topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
-
-
 end

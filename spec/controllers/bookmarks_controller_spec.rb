@@ -5,8 +5,6 @@ RSpec.describe BookmarksController, type: :controller do
   let(:my_bookmark) { Bookmark.create!(url: "www.google.com", topic_id: my_topic.id) }
   let(:my_user) { User.create(email: "blocmarks@example.com", password: "blocmarks", password_confirmation: "blocmarks")}
 
-  #it { is_expected.to belong_to(:my_topic) }
-
   before(:each) do
     my_user.skip_confirmation!
     sign_in(my_user)

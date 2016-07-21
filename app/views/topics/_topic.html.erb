@@ -1,0 +1,4 @@
+<h2><%= topic.title %></h2>
+<% all_bookmarks(topic).each do |bookmark| %>
+  <%= render partial: "bookmarks/bookmark", locals: { bookmark: bookmark } %>
+<% end %>

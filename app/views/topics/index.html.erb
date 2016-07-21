@@ -1,0 +1,14 @@
+<h1>Topics#index</h1>
+<h2>All Blocmarks</h2>
+
+<div class="row">
+  <% @topics.each do |topic| %>
+    <h2><%= topic.title %></h2>
+    <% first_four_bookmarks(topic).each do |bookmark| %>
+      <%= render partial: "bookmarks/bookmark", locals: { bookmark: bookmark } %>
+    <% end %>
+  <% end %>
+</div>
+<div class="col-md-4">
+  <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
+</div>

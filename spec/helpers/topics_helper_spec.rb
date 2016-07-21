@@ -11,5 +11,7 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe TopicsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:my_topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
+
+
 end

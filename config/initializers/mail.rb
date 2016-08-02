@@ -1,16 +1,20 @@
-ActionMailer::Base.smtp_settings = {
-  port:              587,
-  address:           'smtp.mailgun.org',
-  user_name:         ENV['MAILGUN_SMTP_LOGIN'],
-  password:          ENV['MAILGUN_SMTP_PASSWORD'],
-  domain:            'https://fast-stream-50091.herokuapp.com',
-  authentication:    :plain,
-  content_type:      'text/html'
-}
-ActionMailer::Base.delivery_method = :smtp
+unless Rails.env.development?
+  ActionMailer::Base.smtp_settings = {
+    port:              587,
+    address:           'smtp.mailgun.org',
+    user_name:         ENV['MAILGUN_SMTP_LOGIN'],
+    password:          ENV['MAILGUN_SMTP_PASSWORD'],
+    domain:            'https://fast-stream-50091.herokuapp.com',
+    authentication:    :plain,
+    content_type:      'text/html'
+  }
+  ActionMailer::Base.delivery_method = :smtp
+end
 
-# Makes debugging *way* easier.
-ActionMailer::Base.raise_delivery_errors = true
+if Rails.env.development?
+  # Makes debugging *way* easier.
+  ActionMailer::Base.raise_delivery_errors = false
+end
 
 # This interceptor just makes sure that local mail
 # only emails you.

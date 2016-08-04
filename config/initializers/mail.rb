@@ -4,7 +4,7 @@ unless Rails.env.development?
     address:           'smtp.mailgun.org',
     user_name:         ENV['MAILGUN_SMTP_LOGIN'],
     password:          ENV['MAILGUN_SMTP_PASSWORD'],
-    domain:            'appe7b72888b4494528b932384a5c0fb86b.mailgun.org',
+    domain:            'https://fast-stream-50091.herokuapp.com',
     authentication:    :plain,
     content_type:      'text/html'
   }

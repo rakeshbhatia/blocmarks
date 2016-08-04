@@ -14,7 +14,7 @@ class IncomingController < ApplicationController
 
     # Title of Topic
     # Find the topic by using params[:subject]
-    @topic = Topic.find_by(title: params[:subject])
+    #@topic = Topic.find_by(title: params[:subject])
 
     # URL of Bookmark
     # Assign the url to a variable after retreiving it from params["body-plain"]
@@ -26,7 +26,10 @@ class IncomingController < ApplicationController
     if @user.nil?
       @user = User.new(email: params[:sender], password: "password")
       @user.skip_confirmation!
-      @user.save!
+      if @user.save!
+        # send email with password
+        UserMailer.welcome_email(@user).deliver_now
+      end
     end
 
     @topic = @user.topics.find_or_create_by(title: params[:subject])

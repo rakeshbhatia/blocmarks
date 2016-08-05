@@ -9,5 +9,5 @@
 # production:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
-SENDGRID_USERNAME: myspecialusername
-SENDGRID_PASSWORD: exAmplePa$$
+SENDGRID_USERNAME: postmaster@appe7b72888b4494528b932384a5c0fb86b.mailgun.org
+SENDGRID_PASSWORD: fef6f6515b44a820929ee7417fda80a2

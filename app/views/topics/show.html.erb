@@ -1,4 +1,11 @@
 <div class="row">
   <%= render partial: "topics/topic", locals: { topic: @topic } %>
 </div>
-<%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %>
+
+<% if policy(@topic).create? %>
+  <%= link_to "Add Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-primary' %>
+<% end %>
+
+<% if policy(@topic).destroy? %>
+  <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %>
+<% end %>

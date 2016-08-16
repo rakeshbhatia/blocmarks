@@ -15,7 +15,6 @@ class BookmarksController < ApplicationController
     @bookmark.topic = topic
 
     if @bookmark.save
-      format_url
       flash[:notice] = "Bookmark was saved successfully."
       redirect_to [@bookmark.topic, @bookmark]
     else
@@ -32,7 +31,6 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.find(params[:id])
 
     if @bookmark.update(bookmark_params)
-      format_url
       flash[:notice] = "Bookmark was updated successfully."
       redirect_to [@bookmark.topic, @bookmark]
     else
@@ -58,11 +56,4 @@ class BookmarksController < ApplicationController
   def bookmark_params
     params.require(:bookmark).permit(:url)
   end
-
-  #def authorize_user
-  #  unless user_is_authorized_for_bookmarks?
-  #    flash[:alert] = "You must be the current user to do that."
-  #    redirect_to bookmarks_path
-  #  end
-  #end
 end

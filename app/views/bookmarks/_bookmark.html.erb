@@ -4,7 +4,7 @@
       <h4 class="media-heading">
         <%= image_tag("http://placehold.it/350x350", class: 'img-responsive') %>
         <%= link_to bookmark.url, bookmark.url %>
-        <p>Like</p>
+        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
       </h4>
     </div>
   </div>

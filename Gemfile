@@ -24,6 +24,8 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'figaro', '1.0'
+
+gem 'pundit'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

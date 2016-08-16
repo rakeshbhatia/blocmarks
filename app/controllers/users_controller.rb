@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+  def show
+    # populate @user_bookmarks with the user's bookmarks
+    @user = User.find(params[:id])
+    @bookmarks = @user.bookmarks
+    # populate @liked_bookmarks with liked bookmarks
+    #@liked_bookmarks = @user.bookmarks.liked_by
+  end
+
   # POST /users
   # POST /users.json
   def create
@@ -16,5 +24,5 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-  end  
+  end
 end

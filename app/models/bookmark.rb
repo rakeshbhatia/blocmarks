@@ -10,14 +10,16 @@ class Bookmark < ActiveRecord::Base
   end
 
   def format_url
-    # Check to see if URL contains http or https. If it doesn't, add it before saving.
     match_string = /http:\/\//.match(url)
 
-    # concatenate @bookmark.url with the string "https://"
     if match_string == nil
       match_string = "http://"
       match_string.concat(url)
       self.url = match_string
     end
+  end
+
+  def liked_by(user)
+    Bookmark.joins(:like).where(like: { user_id: user.id })
   end
 end

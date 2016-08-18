@@ -2,9 +2,10 @@ class UsersController < ApplicationController
   def show
     # populate @user_bookmarks with the user's bookmarks
     @user = User.find(params[:id])
-    @bookmarks = @user.bookmarks
+    @topics = Topic.joins(:bookmarks).where(bookmarks: { user_id: @user.id }).uniq
     # populate @liked_bookmarks with liked bookmarks
-    #@liked_bookmarks = @user.bookmarks.liked_by
+    #@liked_topics = Topic.joins(bookmarks: :likes).where(bookmarks: { likes: { user_id: @user.id }})
+    @liked_topics = Topic.joins(bookmarks: :likes).where(likes: { user_id: @user.id }).uniq
   end
 
   # POST /users

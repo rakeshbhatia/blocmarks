@@ -17,7 +17,7 @@ class IncomingController < ApplicationController
       end
     end
 
-    @topic = @user.topics.find_or_create_by(title: params[:subject])
+    @topic = Topic.find_or_create_by(title: params[:subject])
 
     @bookmark = @topic.bookmarks.create(url: @url)
 

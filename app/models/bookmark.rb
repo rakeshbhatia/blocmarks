@@ -2,12 +2,9 @@ class Bookmark < ActiveRecord::Base
   before_save :format_url
 
   belongs_to :topic
+  belongs_to :user
 
   has_many :likes, dependent: :destroy
-
-  def user
-    topic.user
-  end
 
   def format_url
     match_string = /http:\/\//.match(url)
@@ -19,7 +16,7 @@ class Bookmark < ActiveRecord::Base
     end
   end
 
-  def liked_by(user)
-    Bookmark.joins(:like).where(like: { user_id: user.id })
+  def self.liked_by(user)
+    Bookmark.joins(:likes).where(likes: { user_id: user.id })
   end
 end

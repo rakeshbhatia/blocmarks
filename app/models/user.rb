@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :topics, dependent: :destroy
-
+  has_many :bookmarks, dependent: :destroy
   has_many :likes, dependent: :destroy
 
   def liked(bookmark)

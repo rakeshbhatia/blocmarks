@@ -1,5 +1,25 @@
 <div class="row">
-  <div class="col-md-4">
+  <h2>My Bookmarks</h2>
+  <% @topics.each do |topic| %>
+    <div class="row">
+      <h3><%= topic.title %></h3>
+      <% @bookmarks = bookmarks_in_topic_by_user(topic, @user) %>
+      <% @bookmarks.each do |liked_bookmark| %>
+        <%= render partial: "bookmarks/bookmark", locals: { bookmark: liked_bookmark } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
-  </div>
+<div class="row">
+  <h2>Liked Bookmarks</h2>
+  <% @liked_topics.each do |topic| %>
+    <div class="row">
+      <h3><%= topic.title %></h3>
+      <% @liked_bookmarks = liked_bookmarks_in_topic_by_user(topic, @user) %>
+      <% @liked_bookmarks.each do |liked_bookmark| %>
+        <%= render partial: "bookmarks/bookmark", locals: { bookmark: liked_bookmark } %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

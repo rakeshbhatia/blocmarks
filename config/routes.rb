@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :bookmarks, only: [:show]
+  end
 
   root 'pages#welcome'
 
   resources :topics, except: [:edit, :update] do
-    resources :bookmarks, except: [:index]
+    resources :bookmarks, except: [:index, :show]
   end
 
   resources :bookmarks, only: [] do

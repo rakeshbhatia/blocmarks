@@ -11,10 +11,10 @@ class LikesController < ApplicationController
 
     if @like.save
       flash[:notice] = "Like was saved successfully."
-      redirect_to [bookmark.topic, bookmark]
+      redirect_to request.referer
     else
       flash.now[:alert] = "Error liking the bookmark. Please try again."
-      redirect_to [bookmark.topic, bookmark]
+      redirect_to request.referer
     end
   end
 
@@ -26,10 +26,10 @@ class LikesController < ApplicationController
 
     if @like.destroy
       flash[:notice] = "\"#{@like}\" was deletd successfully."
-      redirect_to [bookmark.topic, bookmark]
+      redirect_to request.referer
     else
       flash.now[:alert] = "There was an error deleting the like."
-      redirect_to [bookmark.topic, bookmark]
+      redirect_to request.referer
     end
   end
 end
